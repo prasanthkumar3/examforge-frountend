@@ -1,2 +1,2 @@
 export const API_BASE_URL =
-  import.meta.env.API_BASE_URL || "http://127.0.0.1:8000";
+  'https://examforge-backend-r0wpoo2as-prasanth19.vercel.app/';
