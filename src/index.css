@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------- Workspace accents ----------
+   Public pages and the student area use blue, examiners teal, admins indigo.
+   Every component reads bg-accent-* / text-accent-* so a workspace only has
+   to set data-role on its wrapper. */
+:root,
+[data-role="STUDENT"],
+[data-role="PUBLIC"] {
+  --accent-50: 239 246 255;
+  --accent-100: 219 234 254;
+  --accent-200: 191 219 254;
+  --accent-500: 59 130 246;
+  --accent-600: 37 99 235;
+  --accent-700: 29 78 216;
+}
+[data-role="EXAMINER"] {
+  --accent-50: 240 253 250;
+  --accent-100: 204 251 241;
+  --accent-200: 153 246 228;
+  --accent-500: 20 184 166;
+  --accent-600: 13 148 136;
+  --accent-700: 15 118 110;
+}
+[data-role="ADMIN"] {
+  --accent-50: 238 242 255;
+  --accent-100: 224 231 255;
+  --accent-200: 199 210 254;
+  --accent-500: 99 102 241;
+  --accent-600: 79 70 229;
+  --accent-700: 67 56 202;
+}
+
+:root {
+  font-family: Manrope, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: #16181d;
+  background: #f5f6f8;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; background: #f5f6f8; font-size: 15px; }
+button, input, textarea, select { font: inherit; }
+table { font-variant-numeric: tabular-nums; }
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition-colors
+      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2
+      disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary { @apply btn bg-accent-600 text-white hover:bg-accent-700; }
+  .btn-secondary { @apply btn border border-line bg-white text-slate-700 hover:bg-slate-50; }
+  .btn-danger { @apply btn bg-red-600 text-white hover:bg-red-700; }
+  .btn-danger-quiet { @apply btn border border-red-200 bg-white text-red-600 hover:bg-red-50; }
+  .btn-sm { @apply px-3 py-1.5 text-[13px]; }
+  .btn-icon { @apply inline-flex h-8 w-8 items-center justify-center rounded-lg border border-line bg-white text-slate-600 transition-colors hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40
+      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500; }
+
+  .input {
+    @apply w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-ink outline-none transition
+      placeholder:text-slate-400 focus:border-accent-500 focus:ring-4 focus:ring-accent-500/15
+      disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400;
+  }
+  .label { @apply mb-1.5 block text-sm font-medium text-slate-700; }
+  .hint { @apply mt-1 text-xs text-slate-500; }
+  .card { @apply rounded-xl border border-line bg-white; }
+  .page-title { @apply text-2xl font-bold tracking-tight text-ink; }
+  .muted { @apply text-sm text-slate-500; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
